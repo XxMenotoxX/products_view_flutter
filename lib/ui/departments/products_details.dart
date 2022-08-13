@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:view_products/model/product_model.dart';
 import 'package:view_products/responsive/size_config.dart';
+import 'package:view_products/utils/helpers.dart';
 import 'package:view_products/widgets/app_text_montserat.dart';
 
 import '../../firebase/firestore/fb_store_controller.dart';
@@ -14,7 +15,8 @@ class ProductDetailsScreen extends StatefulWidget {
   _ProductDetailsScreenState createState() => _ProductDetailsScreenState();
 }
 
-class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
+class _ProductDetailsScreenState extends State<ProductDetailsScreen>
+    with Helpers {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -259,9 +261,12 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       //     collectionName: 'productsLogs');
                       FbStoreController()
                           .addProductCart(products: widget.products);
+                      showSnackBar(
+                          context: context,
+                          content: 'Product added to order successfully');
                     },
                     child: Text(
-                      'Buy Now',
+                      'Add To Order',
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: SizeConfig().scaleTextFont(18),

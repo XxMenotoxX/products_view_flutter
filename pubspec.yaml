@@ -42,9 +42,9 @@ dev_dependencies:
     sdk: flutter
 
 flutter_icons:
-  android: "launcher_icon"
+  android: "assets/warehous2e.png"
   ios: true
-  image_path: "assets/HELLO.jpg"
+  image_path: "assets/warehous2e.png"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

@@ -4,7 +4,7 @@
 
     <application
         android:label="Warehouse Management"
-        android:icon="@drawable/drinks"
+        android:icon="@drawable/warehouse"
         android:usesCleartextTraffic= "true"
 
         >
