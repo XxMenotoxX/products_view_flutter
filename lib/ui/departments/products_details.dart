@@ -45,7 +45,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         //   ),
         // ],
         title: Text(
-          widget.products.name,
+          widget.products.name ?? "",
           style: TextStyle(
               fontSize: SizeConfig().scaleTextFont(28),
               // fontSize: 28,
@@ -110,8 +110,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             ),
             Padding(
                 padding: EdgeInsetsDirectional.only(start: 20),
-                child:
-                    AppTexMontseratBlack(titleOfButton: widget.products.name)),
+                child: AppTexMontseratBlack(
+                    titleOfButton: widget.products.name ?? "")),
             SizedBox(
               height: SizeConfig().scaleHeight(20),
             ),
@@ -124,7 +124,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       width: SizeConfig().scaleWidth(167),
                       height: SizeConfig().scaleHeight(294),
                       child: Text(
-                        widget.products.description,
+                        widget.products.description ?? "",
                         style: TextStyle(
                           fontFamily: 'Montserrat',
                           fontWeight: FontWeight.w500,
@@ -139,7 +139,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   ),
                   Expanded(
                     child: Image(
-                      image: NetworkImage(widget.products.imagePath),
+                      image: NetworkImage(widget.products.imagePath ?? ""),
                       width: SizeConfig().scaleWidth(249),
                       height: SizeConfig().scaleHeight(345),
                       fit: BoxFit.cover,
@@ -250,9 +250,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      FbStoreController().createProductsLogs(
-                          product: widget.products,
-                          collectionName: 'productsLogs');
+                      // FbStoreController().createProductsLogs(
+                      //     product: widget.products,
+                      //     collectionName: 'productsLogs');
+                      FbStoreController()
+                          .addProductCart(products: widget.products);
                     },
                     child: Text(
                       'Buy Now',

@@ -67,10 +67,24 @@ class FbStoreController {
         .doc(firebaseUser!.uid)
         .collection('productId')
         .doc(products.path)
+        .set(products.toMap())
+        .then((value) => true)
+        .catchError((error) => false);
+  }
+
+  Future<bool> makeOrder({
+    required Products products,
+  }) async {
+    return await _firebaseFirestore
+        .collection('productsLogs')
+        .doc(firebaseUser!.uid)
+        .collection('OrderId')
+        .doc(products.path)
         .set({
           "imagePath": products.imagePath,
           "name": products.name,
-          'price': products.price
+          'price': products.price,
+          'productCount': products.productCount
         })
         .then((value) => true)
         .catchError((error) => false);
@@ -94,11 +108,17 @@ class FbStoreController {
         .then((value) => true)
         .catchError((error) => false);
   }
-    Future<bool> createProductsLogs(
-      {required Products product, required String collectionName}) async {
+
+  Future<bool> createProductsLogs(
+      {required List<Products> product, required String collectionName}) async {
+    final now = DateTime.now();
+
     return await _firebaseFirestore
         .collection(collectionName)
-        .add(product.toMap())
+        .add({
+          'orderId': '${now.microsecondsSinceEpoch.toString()}',
+          "product": product.map((e) => e.toMap()).toList(),
+        })
         .then((value) => true)
         .catchError((error) => false);
   }

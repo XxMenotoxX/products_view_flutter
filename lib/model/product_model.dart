@@ -1,21 +1,34 @@
 class Products {
-  late int id;
+  late int? id;
   int? idSubCategories = 0;
-  late String price;
-  late String name;
+  late String? price;
+  late String? name;
 
-  late String imagePath;
-  late String productCount;
+  late String? imagePath;
+  late String? productCount;
 
-  late String description;
+  late String? description;
 
-  late String shortDescription;
-  late bool isAddToCard;
-  late bool isFavorite;
-  late String subCategoriesName;
-  late String path;
+  late String? shortDescription;
+  late bool? isAddToCard;
+  late bool? isFavorite;
+  late String? subCategoriesName;
+  late String? path;
 
-  Products();
+  Products(
+      {this.id,
+      this.idSubCategories,
+      this.price,
+      this.name,
+      this.imagePath,
+      this.productCount,
+      this.description,
+      this.shortDescription,
+      this.isAddToCard,
+      this.isFavorite,
+      this.subCategoriesName,
+      this.path});
+  
 
   Products.fromMap(Map<String, dynamic> map) {
     name = map['name'];
