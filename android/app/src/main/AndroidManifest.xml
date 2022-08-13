@@ -3,7 +3,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:label="Drinks App"
+        android:label="Warehouse Management"
         android:icon="@drawable/drinks"
         android:usesCleartextTraffic= "true"
 

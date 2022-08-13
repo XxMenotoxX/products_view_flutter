@@ -172,9 +172,6 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
                                 ),
                                 child: Row(
                                   children: [
-                                    Icon(Icons.local_drink_outlined),
-                                    SizedBox(
-                                        width: SizeConfig().scaleWidth(20)),
                                     Expanded(
                                       child: Text(
                                         data.elementAt(index).get('name'),
