@@ -4,6 +4,8 @@ import 'package:view_products/model/main_categories.dart';
 import 'package:view_products/model/product_model.dart';
 import 'package:view_products/model/user_model.dart';
 
+import '../../model/time-format.dart';
+
 class FbStoreController {
   FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   var firebaseUser = FirebaseAuth.instance.currentUser;
@@ -116,8 +118,11 @@ class FbStoreController {
     return await _firebaseFirestore
         .collection(collectionName)
         .add({
-          'orderId': '${now.microsecondsSinceEpoch.toString()}',
+          'orderId':
+              '${TimeDate.orderTimeDate(DateTime.now().microsecondsSinceEpoch)}',
           "product": product.map((e) => e.toMap()).toList(),
+          "numberOfProducts": product.length,
+          'userId': firebaseUser!.displayName ?? firebaseUser!.email,
         })
         .then((value) => true)
         .catchError((error) => false);
