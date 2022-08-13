@@ -100,6 +100,18 @@ class FbStoreController {
         .snapshots();
   }
 
+  Future deleteAllProductsFromCart() async {
+    //delete all products from cart
+    return await _firebaseFirestore
+        .collection('ItemCart')
+        .doc(firebaseUser!.uid)
+        .collection('productId')
+        .get()
+        .then((value) => value.docs.forEach((element) {
+              element.reference.delete();
+            }));
+  }
+
   Future<bool> deleteProducts({required String path}) async {
     return await _firebaseFirestore
         .collection('ItemCart')

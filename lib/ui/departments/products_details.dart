@@ -153,6 +153,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             ),
             Expanded(
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
                     padding: EdgeInsetsDirectional.only(start: 20),
@@ -173,23 +174,22 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         child: Text(
                           ('Product Count'),
                           style: TextStyle(
-                            fontSize: SizeConfig().scaleTextFont(28),
+                            fontSize: SizeConfig().scaleTextFont(20),
                             fontFamily: 'Montserrat',
                             fontWeight: FontWeight.w700,
-                            color: Color(0XFF303030),
+                            color: Colors.grey,
                           ),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.only(start: 20),
+                        padding: EdgeInsetsDirectional.only(start: 10, end: 20),
                         child: Text(
                           ('${widget.products.productCount}'),
                           style: TextStyle(
-                            fontSize: SizeConfig().scaleTextFont(28),
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.w700,
-                            color: Color(0XFF303030),
-                          ),
+                              fontSize: SizeConfig().scaleTextFont(20),
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.w700,
+                              color: Colors.grey),
                         ),
                       ),
                     ],

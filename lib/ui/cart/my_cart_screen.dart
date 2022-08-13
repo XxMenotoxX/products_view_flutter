@@ -345,7 +345,11 @@ class _MyCartState extends State<MyCart> with Helpers {
                     }).toList();
                     FbStoreController().createProductsLogs(
                         product: products, collectionName: 'productsLogs');
+                   //when order is created, delete all products from cart 
+showSnackBar(context: context, content: 'Order prepared');
+                    FbStoreController().deleteAllProductsFromCart();
                   },
+
                   child: Text(
                     'Place Order',
                     style: TextStyle(
