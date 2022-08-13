@@ -1,13 +1,13 @@
 class Products {
   late int id;
-  late int idSubCategories;
-  late String  price;
+  late int? idSubCategories = 0;
+  late String price;
   late String name;
 
   late String imagePath;
 
   late String description;
-
+  late int productsItemCount;
   late String shortDescription;
   late bool isAddToCard;
   late bool isFavorite;
@@ -18,7 +18,7 @@ class Products {
 
   Products.fromMap(Map<String, dynamic> map) {
     name = map['name'];
-    idSubCategories = map['idSubCategories'];
+    idSubCategories = map['idSubCategories'] ?? 1;
     price = map['price'];
     imagePath = map['imagePath'];
     description = map['description'];
@@ -35,8 +35,9 @@ class Products {
     map['shortDescription'] = shortDescription;
     // map['isAddToCard'] =
     // map['isFavorite'] =
+    map['prodcutItemCount'] = productsItemCount;
     map['name'] = name;
-    map['idSubCategories'] = idSubCategories;
+    map['idSubCategories'] = idSubCategories ?? 1;
 
     return map;
   }

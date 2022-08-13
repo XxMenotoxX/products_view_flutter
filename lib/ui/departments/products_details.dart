@@ -4,6 +4,8 @@ import 'package:view_products/model/product_model.dart';
 import 'package:view_products/responsive/size_config.dart';
 import 'package:view_products/widgets/app_text_montserat.dart';
 
+import '../../firebase/firestore/fb_store_controller.dart';
+
 class ProductDetailsScreen extends StatefulWidget {
 
 late Products products ;
@@ -211,7 +213,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     width: SizeConfig().scaleWidth(16),
                   ),
                   ElevatedButton(
-                    onPressed: () {Navigator.pushNamed(context, '/AddDelates');},
+                    onPressed: () {
+                      FbStoreController().createProductsLogs(product: widget.products, collectionName: 'productsLogs');
+                      // Navigator.pushNamed(context, '/AddDelates');
+                      },
                     child: Text(
                       'Buy Now',
                       style: TextStyle(
