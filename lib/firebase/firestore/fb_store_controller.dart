@@ -94,13 +94,4 @@ class FbStoreController {
         .then((value) => true)
         .catchError((error) => false);
   }
-
-  Future<bool> createProductsLogs(
-      {required Products product, required String collectionName}) async {
-    return await _firebaseFirestore
-        .collection(collectionName)
-        .add(product.toMap())
-        .then((value) => true)
-        .catchError((error) => false);
-  }
 }
