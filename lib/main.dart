@@ -18,6 +18,7 @@ import 'package:view_products/ui/payment/Confrmation.dart';
 import 'package:view_products/ui/payment/PaymentMethods.dart';
 import 'package:view_products/ui/register/forget_password_screen.dart';
 import 'package:view_products/ui/register/login_screen.dart';
+
 import 'package:view_products/ui/register/sign_up_screen.dart';
 import 'package:view_products/ui/settings/ProfileSetting.dart';
 import 'package:view_products/ui/settings/change_email.dart';
@@ -66,7 +67,7 @@ class _MyAppState extends State<MyApp> {
         '/profile_settings': (context) => ProfileSetting(),
         '/welcome_screen': (context) => OutBoardingScreen(),
         '/AddDelates': (context) => AddDelates(),
-        '/my_cart_screen':(context) => MyCart(),
+        '/my_cart_screen': (context) => MyCart(),
         '/change_password': (context) => ChangePassword(),
         '/change_Email': (context) => ChangeEmail(),
         '/change_profile': (context) => ChangeProfile(),

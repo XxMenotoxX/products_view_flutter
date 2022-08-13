@@ -1,10 +1,11 @@
 class Products {
   late int id;
-  late int idSubCategories;
-  late String  price;
+  int? idSubCategories = 0;
+  late String price;
   late String name;
 
   late String imagePath;
+  late String productCount;
 
   late String description;
 
@@ -18,11 +19,13 @@ class Products {
 
   Products.fromMap(Map<String, dynamic> map) {
     name = map['name'];
-    idSubCategories = map['idSubCategories'];
+    idSubCategories = map['idSubCategories'] ?? 1;
     price = map['price'];
     imagePath = map['imagePath'];
     description = map['description'];
     shortDescription = map['shortDescription'];
+    productCount = map['productCount'];
+
     // isAddToCard = map['isAddToCard'];
     // isFavorite = map['isFavorite'];
   }
@@ -37,6 +40,7 @@ class Products {
     // map['isFavorite'] =
     map['name'] = name;
     map['idSubCategories'] = idSubCategories;
+    map['productCount'] = productCount;
 
     return map;
   }

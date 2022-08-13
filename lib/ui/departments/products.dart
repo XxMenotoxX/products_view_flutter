@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:view_products/firebase/firestore/fb_store_controller.dart';
 import 'package:view_products/model/product_model.dart';
@@ -19,7 +18,7 @@ class ProductsScreen extends StatefulWidget {
   _ProductsScreenState createState() => _ProductsScreenState();
 }
 
-class _ProductsScreenState extends State<ProductsScreen> with Helpers{
+class _ProductsScreenState extends State<ProductsScreen> with Helpers {
   late TextEditingController _controller;
   late String? _value;
   late Iterable<QueryDocumentSnapshot> data;
@@ -247,7 +246,8 @@ class _ProductsScreenState extends State<ProductsScreen> with Helpers{
                                               color: Colors.black,
                                             ),
                                             onPressed: () async {
-                                              await AddToCart(getProduct(data.elementAt(index)));
+                                              await AddToCart(getProduct(
+                                                  data.elementAt(index)));
                                             },
                                           ),
                                         ),
@@ -289,6 +289,7 @@ class _ProductsScreenState extends State<ProductsScreen> with Helpers{
     products.price = snapshot.get('price');
     products.imagePath = snapshot.get('imagePath');
     products.description = snapshot.get('description');
+    products.productCount = snapshot.get('productCount');
     products.shortDescription = snapshot.get('shortDescription');
     products.subCategoriesName = widget.nameSubCategories;
 
@@ -296,13 +297,12 @@ class _ProductsScreenState extends State<ProductsScreen> with Helpers{
   }
 
   Future<void> AddToCart(Products products) async {
-     bool status = await FbStoreController().addProductCart(products: products);
-   if(status){
-     showSnackBar(context: context, content: 'Successfully Add to Cart');
-   }
-   else{
-     showSnackBar(context: context, content: 'Error in Add to Cart',error: true);
-   }
-
+    bool status = await FbStoreController().addProductCart(products: products);
+    if (status) {
+      showSnackBar(context: context, content: 'Successfully Add to Cart');
+    } else {
+      showSnackBar(
+          context: context, content: 'Error in Add to Cart', error: true);
+    }
   }
 }

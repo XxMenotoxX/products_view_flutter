@@ -18,7 +18,8 @@ class FBControllerStorage {
     return [];
   }
 
-  void upload({required File pickedFile, required ImageEventHandler eventsHandler}) {
+  void upload(
+      {required File pickedFile, required ImageEventHandler eventsHandler}) {
     UploadTask uploadTask = _firebaseStorage
         .ref('images/${DateTime.now().millisecond}')
         .putFile(pickedFile);
@@ -26,7 +27,8 @@ class FBControllerStorage {
       if (event.state == TaskState.running) {
         eventsHandler(false, 'its still running ', event.state);
       } else if (event.state == TaskState.success) {
-        eventsHandler(true, 'Uploaded Successfully', event.state,reference: event.ref);
+        eventsHandler(true, 'Uploaded Successfully', event.state,
+            reference: event.ref);
       } else if (event.state == TaskState.error) {
         eventsHandler(false, 'Upload Failed', event.state);
       }

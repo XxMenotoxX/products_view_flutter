@@ -1,15 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:view_products/model/product_model.dart';
 import 'package:view_products/responsive/size_config.dart';
 import 'package:view_products/widgets/app_text_montserat.dart';
 
+import '../../firebase/firestore/fb_store_controller.dart';
+
 class ProductDetailsScreen extends StatefulWidget {
+  late Products products;
 
-late Products products ;
-
-
-ProductDetailsScreen({required this.products});
+  ProductDetailsScreen({required this.products});
 
   @override
   _ProductDetailsScreenState createState() => _ProductDetailsScreenState();
@@ -36,9 +35,17 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             Navigator.pop(context);
           },
         ),
-
+        // actions: [
+        //   IconButton(
+        //     onPressed: () {},
+        //     icon: Icon(
+        //       Icons.search,
+        //       color: Colors.white,
+        //     ),
+        //   ),
+        // ],
         title: Text(
-          widget.products.subCategoriesName,
+          widget.products.name,
           style: TextStyle(
               fontSize: SizeConfig().scaleTextFont(28),
               // fontSize: 28,
@@ -103,7 +110,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             ),
             Padding(
                 padding: EdgeInsetsDirectional.only(start: 20),
-                child: AppTexMontseratBlack(titleOfButton:widget.products.name)),
+                child:
+                    AppTexMontseratBlack(titleOfButton: widget.products.name)),
             SizedBox(
               height: SizeConfig().scaleHeight(20),
             ),
@@ -116,9 +124,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       width: SizeConfig().scaleWidth(167),
                       height: SizeConfig().scaleHeight(294),
                       child: Text(
-                        widget.products.description
-                        ,
-
+                        widget.products.description,
                         style: TextStyle(
                           fontFamily: 'Montserrat',
                           fontWeight: FontWeight.w500,
@@ -146,17 +152,49 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               height: SizeConfig().scaleHeight(29),
             ),
             Expanded(
-              child: Padding(
-                padding: EdgeInsetsDirectional.only(start: 20),
-                child: Text(
-                  ('\$${widget.products.price}'),
-                  style: TextStyle(
-                    fontSize: SizeConfig().scaleTextFont(28),
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.w700,
-                    color: Color(0XFF303030),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.only(start: 20),
+                    child: Text(
+                      ('\$${widget.products.price}'),
+                      style: TextStyle(
+                        fontSize: SizeConfig().scaleTextFont(28),
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w700,
+                        color: Color(0XFF303030),
+                      ),
+                    ),
                   ),
-                ),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.only(start: 20),
+                        child: Text(
+                          ('Product Count'),
+                          style: TextStyle(
+                            fontSize: SizeConfig().scaleTextFont(28),
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.w700,
+                            color: Color(0XFF303030),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.only(start: 20),
+                        child: Text(
+                          ('${widget.products.productCount}'),
+                          style: TextStyle(
+                            fontSize: SizeConfig().scaleTextFont(28),
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.w700,
+                            color: Color(0XFF303030),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
             // SizedBox(height: SizeConfig().scaleHeight(84),),
@@ -211,7 +249,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     width: SizeConfig().scaleWidth(16),
                   ),
                   ElevatedButton(
-                    onPressed: () {Navigator.pushNamed(context, '/AddDelates');},
+                    onPressed: () {
+                      FbStoreController().createProductsLogs(
+                          product: widget.products,
+                          collectionName: 'productsLogs');
+                    },
                     child: Text(
                       'Buy Now',
                       style: TextStyle(

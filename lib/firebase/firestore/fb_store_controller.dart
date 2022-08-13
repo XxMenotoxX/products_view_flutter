@@ -7,7 +7,9 @@ import 'package:view_products/model/user_model.dart';
 class FbStoreController {
   FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   var firebaseUser = FirebaseAuth.instance.currentUser;
-  Future<bool> create({required MainCategories mainCategories,required String collectionName }) async {
+  Future<bool> create(
+      {required MainCategories mainCategories,
+      required String collectionName}) async {
     return await _firebaseFirestore
         .collection(collectionName)
         .add(mainCategories.toMap())
@@ -16,7 +18,9 @@ class FbStoreController {
   }
 
   Future<bool> update(
-      {required String path, required MainCategories mainCategories,required String collectionName}) async {
+      {required String path,
+      required MainCategories mainCategories,
+      required String collectionName}) async {
     return await _firebaseFirestore
         .collection(collectionName)
         .doc(path)
@@ -25,7 +29,8 @@ class FbStoreController {
         .catchError((error) => false);
   }
 
-  Future<bool> delete({required String path,required String collectionName}) async {
+  Future<bool> delete(
+      {required String path, required String collectionName}) async {
     return await _firebaseFirestore
         .collection(collectionName)
         .doc(path)
@@ -34,12 +39,14 @@ class FbStoreController {
         .catchError((error) => false);
   }
 
-  Stream<QuerySnapshot> read({required String collectionName}) async*{
-    yield*_firebaseFirestore.collection(collectionName).snapshots();
+  Stream<QuerySnapshot> read({required String collectionName}) async* {
+    yield* _firebaseFirestore.collection(collectionName).snapshots();
   }
-  Stream<QuerySnapshot> readUserData({required String collectionName}) async*{
-    yield*_firebaseFirestore.collection(collectionName).snapshots();
+
+  Stream<QuerySnapshot> readUserData({required String collectionName}) async* {
+    yield* _firebaseFirestore.collection(collectionName).snapshots();
   }
+
   Future<bool> createUser({
     required UserData userData,
     required String collectionName,
@@ -52,27 +59,47 @@ class FbStoreController {
         .catchError((error) => false);
   }
 
-
   Future<bool> addProductCart({
     required Products products,
   }) async {
     return await _firebaseFirestore
         .collection('ItemCart')
-        .doc(firebaseUser!.uid).collection('productId').doc(products.path)
-        .set({"imagePath":products.imagePath, "name": products.name,'price':products.price})
+        .doc(firebaseUser!.uid)
+        .collection('productId')
+        .doc(products.path)
+        .set({
+          "imagePath": products.imagePath,
+          "name": products.name,
+          'price': products.price
+        })
         .then((value) => true)
         .catchError((error) => false);
   }
 
-
-  Stream<QuerySnapshot> readUserProductCart() async*{
-    yield*_firebaseFirestore.collection('ItemCart').doc(firebaseUser!.uid).collection('productId').snapshots();
+  Stream<QuerySnapshot> readUserProductCart() async* {
+    yield* _firebaseFirestore
+        .collection('ItemCart')
+        .doc(firebaseUser!.uid)
+        .collection('productId')
+        .snapshots();
   }
 
   Future<bool> deleteProducts({required String path}) async {
-    return await _firebaseFirestore.collection('ItemCart').doc(firebaseUser!.uid).collection('productId')
+    return await _firebaseFirestore
+        .collection('ItemCart')
+        .doc(firebaseUser!.uid)
+        .collection('productId')
         .doc(path)
         .delete()
+        .then((value) => true)
+        .catchError((error) => false);
+  }
+
+  Future<bool> createProductsLogs(
+      {required Products product, required String collectionName}) async {
+    return await _firebaseFirestore
+        .collection(collectionName)
+        .add(product.toMap())
         .then((value) => true)
         .catchError((error) => false);
   }
