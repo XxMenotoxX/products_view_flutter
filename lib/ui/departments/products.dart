@@ -242,7 +242,7 @@ class _ProductsScreenState extends State<ProductsScreen> with Helpers {
                                           ),
                                           child: IconButton(
                                             icon: Icon(
-                                              Icons.shopping_cart,
+                                              Icons.local_shipping,
                                               color: Colors.black,
                                             ),
                                             onPressed: () async {

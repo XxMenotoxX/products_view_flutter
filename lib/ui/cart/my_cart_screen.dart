@@ -39,7 +39,7 @@ class _MyCartState extends State<MyCart> with Helpers {
           },
         ),
         title: Text(
-          ' My Cart',
+          'Place Shippment',
           style: TextStyle(
               fontSize: 28,
               // fontSize: 28,
@@ -347,7 +347,7 @@ class _MyCartState extends State<MyCart> with Helpers {
                         product: products, collectionName: 'productsLogs');
                   },
                   child: Text(
-                    'Continue Payment',
+                    'Place Order',
                     style: TextStyle(
                       fontFamily: 'Montserrat',
                       fontSize: 16,

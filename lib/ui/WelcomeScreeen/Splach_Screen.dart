@@ -49,7 +49,7 @@ backgroundColor: Color(0XFF242E40),
           children: [
 
             SizedBox(height:SizeConfig().scaleHeight(250) ,width:SizeConfig().scaleWidth(300),
-              child:Lottie.asset('assets/59196-drink.json'),),
+              child:Lottie.asset('assets/24679-order-box-animation.json'),),
 
           ],
         ),

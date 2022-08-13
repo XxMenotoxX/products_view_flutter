@@ -11,11 +11,8 @@ import 'package:view_products/ui/WelcomeScreeen/lanch_screen_1.dart';
 import 'package:view_products/ui/WelcomeScreeen/lanch_screen_2.dart';
 import 'package:view_products/ui/WelcomeScreeen/welcom_sceen_main.dart';
 import 'package:view_products/ui/cart/my_cart_screen.dart';
-
-import 'package:view_products/ui/payment/Add%20payment%20method.dart';
-import 'package:view_products/ui/payment/AddDetailes.dart';
-import 'package:view_products/ui/payment/Confrmation.dart';
-import 'package:view_products/ui/payment/PaymentMethods.dart';
+import 'package:view_products/ui/place_order/AddDetailes.dart';
+import 'package:view_products/ui/place_order/Confrmation.dart';
 import 'package:view_products/ui/register/forget_password_screen.dart';
 import 'package:view_products/ui/register/login_screen.dart';
 
@@ -71,10 +68,11 @@ class _MyAppState extends State<MyApp> {
         '/change_password': (context) => ChangePassword(),
         '/change_Email': (context) => ChangeEmail(),
         '/change_profile': (context) => ChangeProfile(),
-        '/add_payment': (context) => AddPayment(),
-        '/select_card': (context) => PaymentMethods(),
         '/confirm_screen': (context) => Confrimation(),
       },
     );
   }
+}
+
+class AddPayment {
 }

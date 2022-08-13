@@ -74,10 +74,10 @@ class _CategoriesState extends State<Categories> with Helpers {
                   if (snapshot.hasError) {
                     print('error no  data ');
                     return Text('Error = ${snapshot.error}');
-                  }
-                  else if (snapshot.hasData&& snapshot.data!.data()!= null) {
+                  } else if (snapshot.hasData &&
+                      snapshot.data!.data() != null) {
                     var data = snapshot.data!.data();
-                     // var value = data['name']; // <-- Your value
+                    // var value = data['name']; // <-- Your value
                     return ListTile(
                       leading: CircleAvatar(
                         radius: 30,
@@ -102,8 +102,7 @@ class _CategoriesState extends State<Categories> with Helpers {
                         ),
                       ),
                     );
-                  }
-                  else {
+                  } else {
                     print('no data ');
 
                     return ListTile(
@@ -212,8 +211,8 @@ class _CategoriesState extends State<Categories> with Helpers {
               ),
 
               DrawerListTile(
-                title: 'Basket',
-                iconData: Icons.shopping_cart,
+                title: 'Shippment',
+                iconData: Icons.local_shipping,
                 onTab: () {
                   Navigator.pushNamed(context, '/my_cart_screen');
                 },
@@ -267,7 +266,7 @@ class _CategoriesState extends State<Categories> with Helpers {
               Navigator.pushNamed(context, '/my_cart_screen');
             },
             icon: Icon(
-              Icons.shopping_cart_sharp,
+              Icons.local_shipping,
               color: Colors.white,
             ),
           ),

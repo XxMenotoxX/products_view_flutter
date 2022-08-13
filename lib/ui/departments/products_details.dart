@@ -219,31 +219,35 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               ),
               child: Row(
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Colors.transparent,
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border(
-                          top: BorderSide(
-                            color: Color(0XFF8E8E8E),
-                          ),
-                          bottom: BorderSide(
-                            color: Color(0XFF8E8E8E),
-                          ),
-                          right: BorderSide(
-                            color: Color(0XFF8E8E8E),
-                          ),
-                          left: BorderSide(
-                            color: Color(0XFF8E8E8E),
-                          ),
-                        )),
-                    child: Icon(
-                      Icons.shopping_cart_outlined,
-                      color: Color(0XFF8E8E8E),
-                      size: SizeConfig()
-                          .scaleHeight(SizeConfig().scaleHeight(26)),
+                  GestureDetector(
+                    onTap: () =>
+                        Navigator.pushNamed(context, '/my_cart_screen'),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border(
+                            top: BorderSide(
+                              color: Color(0XFF8E8E8E),
+                            ),
+                            bottom: BorderSide(
+                              color: Color(0XFF8E8E8E),
+                            ),
+                            right: BorderSide(
+                              color: Color(0XFF8E8E8E),
+                            ),
+                            left: BorderSide(
+                              color: Color(0XFF8E8E8E),
+                            ),
+                          )),
+                      child: Icon(
+                        Icons.local_shipping,
+                        color: Color(0XFF8E8E8E),
+                        size: SizeConfig()
+                            .scaleHeight(SizeConfig().scaleHeight(26)),
+                      ),
+                      padding: EdgeInsets.all(10),
                     ),
-                    padding: EdgeInsets.all(10),
                   ),
                   SizedBox(
                     width: SizeConfig().scaleWidth(16),

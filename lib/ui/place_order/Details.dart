@@ -219,7 +219,7 @@ class _DeatailsState extends State<Deatails> {
                           backgroundColor: Color(0xff252F42)
                       ),onPressed: (){},
                         child: Text(
-                          'Continue Payment ',
+                          'Place Order',
                           style: TextStyle(fontSize: 20,color: Color(0xffffffff)),
                           textAlign: TextAlign.center,),
                       ),
